@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useState } from "react";
-import BoatImage from "@/public/carnivalcruise.jpeg";
+import BoatImage from "@/public/carnivalcruise.png";
 
 export default function Home() {
   // date for july 19th 2024 10:30 am
@@ -28,6 +28,7 @@ export default function Home() {
         height: "100vh",
         backgroundColor: "black",
 
+        color: "black",
         // backgroundImage: `url(${BoatImage.src})`, with opacity 0.4
         backgroundImage: `url(${BoatImage.src})`,
         // backgound opacity
@@ -44,7 +45,9 @@ export default function Home() {
           padding: 30,
           width: "100vw",
           gap: 40,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          // ocean blue rgba(0, 0, 255, 0.5)
+          backgroundColor: "rgba(0, 0, 0, 0.6)",
+
           color: "white",
           textAlign: "center",
         }}
@@ -59,9 +62,9 @@ export default function Home() {
               1 +
               " days " +
               timeLeft.getUTCHours() +
-              " hours " +
+              " hrs " +
               timeLeft.getUTCMinutes() +
-              " minutes " +
+              " min " +
               timeLeft.getUTCSeconds() +
               " seconds "}
           </h1>

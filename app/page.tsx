@@ -41,6 +41,7 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           height: "100vh",
+          padding: 30,
           width: "100vw",
           gap: 40,
           backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -48,14 +49,27 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <h1
-          style={{
-            fontSize: 50,
-          }}
-        >
-          Get Ready!
-        </h1>
-        <h2>
+        <h1>The carnival cruise</h1>
+
+        <div>
+          <h3>You have</h3>
+
+          <h1>
+            {timeLeft.getUTCDate() -
+              1 +
+              " days " +
+              timeLeft.getUTCHours() +
+              " hours " +
+              timeLeft.getUTCMinutes() +
+              " minutes " +
+              timeLeft.getUTCSeconds() +
+              " seconds "}
+          </h1>
+          <h4>to get ready!</h4>
+        </div>
+        <h4>
+          <p>Event Date</p>
+          <br />
           {date.toLocaleString("en-US", {
             weekday: "long",
             year: "numeric",
@@ -64,21 +78,8 @@ export default function Home() {
             hour: "numeric",
             minute: "numeric",
             second: "numeric",
-            timeZoneName: "short",
           })}
-        </h2>
-
-        <h1>
-          {timeLeft.getUTCDate() -
-            1 +
-            " days " +
-            timeLeft.getUTCHours() +
-            " hours " +
-            timeLeft.getUTCMinutes() +
-            " minutes " +
-            timeLeft.getUTCSeconds() +
-            " seconds "}
-        </h1>
+        </h4>
       </div>
     </main>
   );

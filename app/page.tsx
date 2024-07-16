@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { useState } from "react";
-import BoatImage from "@/public/carnivalcruise.png";
+import BoatImage from "@/public/carnivalcruise.webp";
 
 export default function Home() {
   // date for july 19th 2024 10:30 am
@@ -32,7 +32,10 @@ export default function Home() {
         // backgroundImage: `url(${BoatImage.src})`, with opacity 0.4
         backgroundImage: `url(${BoatImage.src})`,
         // backgound opacity
+        // center background image
+        backgroundPosition: "center",
         backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div
@@ -52,7 +55,21 @@ export default function Home() {
           textAlign: "center",
         }}
       >
-        <h1>The carnival cruise</h1>
+        <h1
+          style={{
+            fontSize: 60,
+          }}
+        >
+          🛳️
+        </h1>
+        <h1
+          style={{
+            fontSize: 40,
+            fontWeight: "bold",
+          }}
+        >
+          {"The Carnival Cruise "}
+        </h1>
 
         <div>
           <h3>You have</h3>

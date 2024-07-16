@@ -1,94 +1,84 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useState } from "react";
+import BoatImage from "@/public/carnivalcruise.jpeg";
 
 export default function Home() {
+  // date for july 19th 2024 10:30 am
+  let date = new Date(2024, 6, 19, 10, 30, 0, 0);
+
+  const [timeLeft, setTimeLeft] = useState(
+    new Date(date.getTime() - new Date().getTime())
+  );
+
+  setInterval(() => {
+    setTimeLeft(new Date(date.getTime() - new Date().getTime()));
+  }, 1000);
+
+  // update the time left every secong
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-between",
+        height: "100vh",
+        backgroundColor: "black",
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+        // backgroundImage: `url(${BoatImage.src})`, with opacity 0.4
+        backgroundImage: `url(${BoatImage.src})`,
+        // backgound opacity
+        backgroundSize: "cover",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          width: "100vw",
+          gap: 40,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: 50,
+          }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+          Get Ready!
+        </h1>
+        <h2>
+          {date.toLocaleString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            timeZoneName: "short",
+          })}
+        </h2>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <h1>
+          {timeLeft.getUTCDate() -
+            1 +
+            " days " +
+            timeLeft.getUTCHours() +
+            " hours " +
+            timeLeft.getUTCMinutes() +
+            " minutes " +
+            timeLeft.getUTCSeconds() +
+            " seconds "}
+        </h1>
       </div>
     </main>
   );
